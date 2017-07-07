@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,minimal-ui">
+		<meta name="format-detection" content="telephone=no">
+		<!-- 处理数字不要高亮 -->
+		<link rel="stylesheet" href="css/reset.css">
+		<style type="text/css">
+			@font-face {
+				font-family: 'iconfont';
+				/* project id 347949 */
+				src: url('http://at.alicdn.com/t/font_j1o5xksbf1b81tt9.eot');
+				src: url('http://at.alicdn.com/t/font_j1o5xksbf1b81tt9.eot?#iefix') format('embedded-opentype'), url('http://at.alicdn.com/t/font_j1o5xksbf1b81tt9.woff') format('woff'), url('http://at.alicdn.com/t/font_j1o5xksbf1b81tt9.ttf') format('truetype'), url('http://at.alicdn.com/t/font_j1o5xksbf1b81tt9.svg#iconfont') format('svg');
+			}
+			
+			.icon-font {
+				font-family: 'iconfont';
+				font-size: 18px;
+			}
+			
+			html {
+				width: 100%;
+				height: 100%;
+				overflow-x: hidden;
+			}
+			
+			body {
+				text-align: left;
+				width: 100%;
+				overflow: hidden;
+				background: #e9dfc7;
+			}
+			
+			.fition-container {
+				font-size: 14px;
+				color: #555;
+				line-height: 30px;
+				padding: 15px;
+			}
+			
+			.fition-container h4 {
+				font-size: 20px;
+				color: #736357;
+				border-bottom: 1px solid #736357;
+				letter-spacing: 2px;
+				margin-bottom: 1em;
+			}
+			
+			.fition-container p {
+				text-indent: 2rem;
+				margin: .5rem 0;
+				letter-spacing: 0;
+				line-height: 24px;
+			}
+			
+			.u-tab {
+				height: 34px;
+				margin: 10px auto;
+				line-height: 34px;
+				border-radius: 8px;
+				border: 1px solid #858382;
+				font-size: 12px;
+				background: #333;
+			}
+			
+			.u-tab li {
+				display: inline-block;
+				width: 49%;
+				border-right: 1px solid #858382;
+				text-align: center;
+				color: #fff;
+			}
+			
+			.u-tab li:nth-child(2) {
+				border: none;
+			}
+			
+			.fition-button {
+				width: 70%;
+				max-width: 800px;
+				margin: 0 auto;
+				padding: 5px;
+			}
+			
+			.top-nav {
+				position: fixed;
+				top: 0px;
+				height: 50px;
+				width: 100%;
+				z-index: 9999;
+				background: #000;
+			}
+			
+			.icon-back {
+				position: absolute;
+				top: 14px;
+				left: 10px;
+				width: 24px;
+				height: 24px;
+				color: #fff;
+			}
+			
+			.nav-title {
+				position: absolute;
+				top: 16px;
+				left: 42px;
+				color: #d5d5d6;
+			}
+			
+			.bottom-nav {
+				position: fixed;
+				bottom: 0;
+				background: rgba(0, 0, 0, .9);
+				color: #fff;
+				width: 100%;
+				padding-left: 1px;
+				height: 70px;
+				line-height: 25px;
+			}
+			
+			.nav-font,
+			.nav-directory,
+			.nav-daytime,
+			.nav-nightime {
+				padding-top: 12px;
+				width: 32.4%;
+				display: inline-block;
+				vertical-align: middle;
+				text-align: center;
+				height: 60px;
+			}
+			
+			.nav-nightime {
+				display: none;
+			}
+			
+			.font-color {
+				color: #ff9800;
+			}
+			
+			.nav-pannel {
+				height: 134px;
+				position: fixed;
+				bottom: 70px;
+				width: 100%;
+				background: rgba(0, 0, 0, .9);
+				/*background: #eee;*/
+				color: #fff;
+			}
+			
+			.child-mod {
+				padding: 6px 10px;
+				margin: 15px;
+			}
+			
+			.child-mod span {
+				display: inline-block;
+				padding-left: 10px;
+				padding-right: 20px;
+			}
+			
+			.font-size-button {
+				background: none;
+				border: 1px solid #8c8c8c;
+				color: #fff;
+				border-radius: 16px;
+				padding: 5px 40px;
+			}
+			
+			.child-mod button:nth-child(2) {
+				margin-right: 10px;
+			}
+			
+			.bk-container {
+				width: 30px;
+				height: 30px;
+				border-radius: 15px;
+				background: #fff;
+				display: inline-block;
+				margin-right: 10px;
+				vertical-align: middle;
+			}
+			
+			.bk-container-active {
+				box-shadow: 0 0 0 2px #ff7800;
+			}
+			
+			.child-mod .bk-container:nth-child(2) {
+				background: #f7eee5;
+			}
+			
+			.child-mod .bk-container:nth-child(3) {
+				background: #e9dfc7;
+			}
+			
+			.child-mod .bk-container:nth-child(4) {
+				background: #a4a4a4;
+			}
+			
+			.child-mod .bk-container:nth-child(5) {
+				background: #cdefce;
+			}
+			
+			.child-mod .bk-container:nth-child(6) {
+				background: #283548;
+			}
+			
+			.child-mod .bk-container:nth-child(7) {
+				background: #0f1410;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container" id="root">
+			<div class="top-nav">
+				<div class="icon-back icon-font">&#xe72e;</div>
+				<div class="nav-title">返回书架</div>
+			</div>
+			<div class="bottom-nav">
+				<div class="nav-directory">
+					<p class="icon-font">&#xe6c5;</p>
+					<p>目录</p>
+				</div>
+				<div class="nav-font">
+					<p class="icon-font font-color">&#xe636;</p>
+					<p>字体</p>
+				</div>
+				<div class="nav-daytime">
+					<p class="icon-font">&#xe6c8;</p>
+					<p>白天</p>
+				</div>
+				<div class="nav-nightime">
+					<p class="icon-font">&#xe610;</p>
+					<p>夜晚</p>
+				</div>
+			</div>
+			<div class="fition-chapter-titile">
+			</div>
+			<div class="fition-container">
+				<h4>没有办法了</h4>
+				<p>Fiction则放下第一首歌中我们听到的那种重复的痛心旋律，几乎毫无失误的从The Fact承接了情绪的转变。 和任何一首歌一样，Fiction最出色的其中一个部份就是副歌。并不是因为它悦耳得琅琅上口，而是它被拼凑起来的方式。基本上主要有两个部分在合作：一长串歌词（第一次由张贤胜和梁耀燮唱的部分）以及一个潜伏的基础(fiction in fiction)。这个安排相当微妙，将这两样东西其中任何一个拿掉都将让这首歌的感觉不再完整。 Fiction是首感觉强烈的歌，戏剧性地和接下来K-pop要我们感受到的夏日气氛产生对比。这张专辑听起来并不开朗或充满能量，所以对现在准备去买比基尼的人来说可能会有很不寻常的感受。[4] </p>
+				<p>Fiction则放下第一首歌中我们听到的那种重复的痛心旋律，几乎毫无失误的从The Fact承接了情绪的转变。 和任何一首歌一样，Fiction最出色的其中一个部份就是副歌。并不是因为它悦耳得琅琅上口，而是它被拼凑起来的方式。基本上主要有两个部分在合作：一长串歌词（第一次由张贤胜和梁耀燮唱的部分）以及一个潜伏的基础(fiction in fiction)。这个安排相当微妙，将这两样东西其中任何一个拿掉都将让这首歌的感觉不再完整。 Fiction是首感觉强烈的歌，戏剧性地和接下来K-pop要我们感受到的夏日气氛产生对比。这张专辑听起来并不开朗或充满能量，所以对现在准备去买比基尼的人来说可能会有很不寻常的感受。[4] </p>
+				<p>Fiction则放下第一首歌中我们听到的那种重复的痛心旋律，几乎毫无失误的从The Fact承接了情绪的转变。 和任何一首歌一样，Fiction最出色的其中一个部份就是副歌。并不是因为它悦耳得琅琅上口，而是它被拼凑起来的方式。基本上主要有两个部分在合作：一长串歌词（第一次由张贤胜和梁耀燮唱的部分）以及一个潜伏的基础(fiction in fiction)。这个安排相当微妙，将这两样东西其中任何一个拿掉都将让这首歌的感觉不再完整。 Fiction是首感觉强烈的歌，戏剧性地和接下来K-pop要我们感受到的夏日气氛产生对比。这张专辑听起来并不开朗或充满能量，所以对现在准备去买比基尼的人来说可能会有很不寻常的感受。[4] </p>
+			</div>
+			<div class="fition-button">
+				<ul class="u-tab">
+					<li class="prev_button">上一章</li>
+					<li class="next_button">下一章</li>
+				</ul>
+			</div>
+			<div class="nav-pannel">
+				<div class="child-mod">
+					<span>字号</span>
+					<button class="font-size-button" id="large-font">大</button >
+					<button class="font-size-button" id='small-font'>小</button >				
+				</div>
+				<div class="child-mod">
+					<span>背景</span>
+					<div class="bk-container"></div>
+					<div class="bk-container"></div>
+					<div class="bk-container"></div>
+					<div class="bk-container"></div>
+					<div class="bk-container"></div>
+					<div class="bk-container"></div>						
+				</div>
+			</div>
+		</div>
+		<script src="lib/zepto.min.js"></script>
+		<script>
+			window.jQuery = $;	
+		</script>
+		<script src="js/jquery.base64.js"></script>
+		<script src="js/jquery.jsonp.js"></script>
+		<script>
+			(function(){
+				//本地存储封装
+				var Util = (function(){
+					var  prefix = 'html_reader_'
+					var  StoragerGetter = function(key){
+						return localStorage.getItem(prefix+key)
+					})
+					var  StorageSetter = function(key,val){
+						return localStorage.setItem(prefix+key , val)
+					}
+					return{
+						StorageGetter : StorageGetter,
+						StorageSetter : StorageSetter
+					}										
+				}) ()	
+				function ReaderModel(){
+					//实现和阅读器相关的数据交互方法
+				}
+			}) ()
+		</script>
+	</body>
+
+</html>
